@@ -1,4 +1,5 @@
-
+var date = (moment().format("L"))
+console.log(date);
 //This is our API key
 var APIKey = "9ac526052b4c1d3800701ee3a4c35a8e";
 
@@ -31,7 +32,7 @@ $(document).ready(function () {
 
                 console.log(response);
 
-                $(".city").html("<h1>" + response.name +"</h1>");
+                $(".city").html("<h2>" + response.name + " " + date + "</h2>");
                 $(".temp").text("Temperature (C) " + response.main.temp);
                 $(".humidity").text("Humidity: " + response.main.humidity);
                 $(".wind").text("Wind Speed:" + response.wind.speed);
