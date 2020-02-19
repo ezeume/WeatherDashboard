@@ -1,0 +1,28 @@
+.text {
+    font-size:25px;
+    font-weight: bold;
+}
+
+/* .col-lg-12 {
+    background-color: black;
+} */
+.card {
+    background-color: rgb(223, 35, 35);
+}
+
+.card-header {
+    /* background-color: black; */
+    font-size: 40px;
+    font-weight: bold;
+    margin: auto;
+    text-align: center;
+    color: rgb(10, 10, 10);
+}
+
+.form-control {
+    margin-right: 500px;
+}
+
+.btn {
+    margin-right:220px;
+}
