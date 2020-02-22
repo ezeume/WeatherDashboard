@@ -1,32 +1,45 @@
+#main {
+    background-color: rgb(228, 236, 240);
+}
+
+#nav{
+    background-color: rgb(12, 12, 12);
+}
 .text {
     font-size:25px;
     font-weight: bold;
 }
 
-/* .col-lg-12 {
-    background-color: black;
-} */
-.card {
-    background-color: rgb(223, 35, 35);
-}
-
 .card-header {
-    /* background-color: black; */
     font-size: 40px;
     font-weight: bold;
     margin: auto;
     text-align: center;
-    color: rgb(10, 10, 10);
+    color: rgb(228, 236, 240);
 }
 
 .form-control {
     margin-right: 500px;
 }
 
-.btn {
-    margin-right:220px;
-}
 .forecast {
     font-size: 25px;
     font-weight: bold;
 }
+
+#col2{
+    margin-left: 0px;
+    margin-top: 50px;
+}
+
+#forecast{
+    float: left;
+}
+/* .fiveday{
+    height: 180px;
+    width:150px;
+    background-color: #027bff; */
+}
+/* #section{
+    margin-left: 350px;
+    /* padding-bottom: 40px; */

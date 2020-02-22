@@ -11,113 +11,132 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
-<body>
-
-
-    <div class="col-sm-12" id="container">
+<body id="main">
+    <section id="nav">
         <div class="card-header">
             Weather Dashboard
         </div>
+    </section>
+
+
+
+    <div class="container">
+
         <div class="row">
 
             <div class="col-4">
-                <p class="text">Search for a city</p>
+                <p class="text">Search for a city:</p>
+
                 <div class="form-inline my-2 my-lg-0">
                     <input id="city" class="form-control mr-sm-2" type="search" placeholder="Search"
                         aria-label="Search">
                     <button id="citySearchButton" class="btn btn-outline-success my-2 my-sm-0"
                         type="submit">search</button>
                 </div>
+
                 <br>
+
                 <div class="card" style="width: 18rem;">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Austin</li>
-                        <li class="list-group-item">Chicago</li>
-                        <li class="list-group-item">New York</li>
-                        <li class="list-group-item">Orlando</li>
-                        <li class="list-group-item">Philadelphia</li>
-                        <li class="list-group-item"></li>
-                        <li class="list-group-item"></li>
-                        <li class="list-group-item"></li>
+                    <ul id="searchHistory" class="list-group list-group-flush">
                     </ul>
                 </div>
+                <div id="searchHistory"></div>
 
             </div>
 
 
-            <div class="col-sm-8">
+            <div class="col-8" id="section">
 
-
-
-                <div class="card w-75">
-                    <div class="card-body">
-
+                <div class="row">
+                    <div class="card card-body">
 
                         <div class="city"></div>
                         <div class="temp"></div>
                         <div class="humidity"></div>
                         <div class="wind"></div>
                         <div class="uv"></div>
-
-
                     </div>
                 </div>
 
-
-
-
-
-
-
-                
-                <div class="forecast">5-Day Forecast</div>
                 <br>
-                <div class="row">
 
-                    <div class="col-2 ">
-                        <img src="https://placehold.it/120x120&text=Look at me!" alt="image for article">
+                <div class="row" id="forecast">
+
+                    <h4>Forecast</h4>
+                </div>
+
+
+                <div class="row" id="fiveday">
+                    <div class="col-sm-2">
+
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title" id="fiveday">Card subtitle</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Temperature</h6>
+                                <p class="card-text">Humidity</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Temperature</h6>
+                                <p class="card-text">Humidity</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Temperature</h6>
+                                <p class="card-text">Humidity</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Temperature</h6>
+                                <p class="card-text">Humidity</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Temperature</h6>
+                                <p class="card-text">Humidity</p>
+
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div class="col-2">
-                        <img src="https://placehold.it/120x120&text=Look at me!" alt="image for article">
-                    </div>
-
-                    <div class="col-2">
-                        <img src="https://placehold.it/120x120&text=Look at me!" alt="image for article">
-                    </div>
-
-                    <div class="col-2 show-for-medium">
-                        <img src="https://placehold.it/120x120&text=Look at me!" alt="image for article">
-                    </div>
-
-                    <div class="col-2 show-for-large">
-                        <img src="https://placehold.it/120x120&text=Look at me!" alt="image for article">
-                    </div>
 
                 </div>
 
             </div>
-
-
-
-
         </div>
 
 
+        <!-- Content here -->
 
-
-
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="script.js"></script>
     </div>
-
-
-
-    <!-- Content here -->
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="script.js"></script>
-
 
 
 </body>
