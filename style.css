@@ -27,19 +27,24 @@
     font-weight: bold;
 }
 
-#col2{
-    margin-left: 0px;
-    margin-top: 50px;
-}
-
-#forecast{
-    float: left;
+#fiveday {
+    height: 180px;
+    width: 150px;
+    margin: 12px;
+    border: 1px solid blue;
+    background-color: #027bff;
+    color: white;
+    padding-top: 5px;
+    padding-left: 5px;
 }
 /* .fiveday{
     height: 180px;
     width:150px;
-    background-color: #027bff; */
+    background-color: #027bff;
+} */
+#left-section{
+    height: 600px;
 }
-/* #section{
-    margin-left: 350px;
-    /* padding-bottom: 40px; */
+#right-section{
+    height: 600px;
+}

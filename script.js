@@ -32,9 +32,9 @@ $(document).ready(function () {
         $("#searchHistory").empty();
 
         for (var i = 0; i < cityHistory.length; i++) {
-            var cityItem = $("<li>")
-            console.log(cityItem)
-            cityItem.text(cityHistory[i])
+            var cityItem = $("<li>");
+            console.log(cityItem);
+            cityItem.text(cityHistory[i]);
             cityItem.addClass("list-group-item");
             $("#searchHistory").prepend(cityItem);
         }
@@ -56,7 +56,7 @@ $(document).ready(function () {
         console.log("api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + key)
 
         $.ajax({
-            url: "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + key,
+            url: "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + key,
             method: "GET"
 
         }).then(function (fiveday) {
@@ -67,13 +67,15 @@ $(document).ready(function () {
             for (var i = 0; i < fiveday.list.length; i = i + 8) {
                 console.log(fiveday.list[i]);
                 // $("#day"+ (i/8+1))
-
-                var newFiveDayDiv = $("<div class='fiveday'>")
+                  // var k = response.main.temp;
+                // var f = ((k - 273.15) * 9) / 5 + 32;
+                // var currentDay = moment.unix(response.dt).format("MM/DD/YYYY");
+                var newFiveDayDiv = $("<div id='fiveday'>")
                 var fiveDayDivTemp = $("<div>").text("Temp: " + fiveday.list[i].main.temp);
                 var fiveDayDivHum = $("<div>").text("Humidity: " + fiveday.list[i].main.humidity);
 
                 newFiveDayDiv.append(fiveDayDivTemp, fiveDayDivHum);
-                $("#fiveday-row").append(newFiveDayDiv);
+                $("#fiveday").append(newFiveDayDiv);
             }
 
         })
@@ -82,28 +84,31 @@ $(document).ready(function () {
 
 
         $.ajax({
-            url: "http://api.openweathermap.org/data/2.5/weather",
+            url: "https://api.openweathermap.org/data/2.5/weather",
             method: "GET",
             data: { q: city, appid: key, units: "metric" },
         })
-            .then(function (response) {
+            .then(function(response) {
 
                 console.log(response);
 
-                $(".city").html("<h2>" + response.name + " " + date + "</h2>");
-                $(".temp").text("Temperature (C): " + response.main.temp);
-                $(".humidity").text("Humidity: " + response.main.humidity);
-                $(".wind").text("Wind Speed: " + response.wind.speed);
+                var icon = "<img scr='https://openweathermap.org/img/w/" + response.weather[0].icon + ".png' alt=Icon depicting current weather.'>";
+
+
+                $(".city").html("<h3>" + response.name + " " + date + icon + "</h3>");
+                $(".temp").text("Temperature: " + response.main.temp + "°C");
+                $(".humidity").text("Humidity: " + response.main.humidity + "%");
+                $(".wind").text("Wind Speed: " + response.wind.speed + "Mph");
 
                 //Adding the UV index.
                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 var lon = response.coord.lon;
                 var lat = response.coord.lat;
-                console.log("http://api.openweathermap.org/data/2.5/uvi?appid=" + key + "&lat=" + lat + "&lon=" + lon)
+                console.log("https://api.openweathermap.org/data/2.5/uvi?appid=" + key + "&lat=" + lat + "&lon=" + lon)
                 //http://api.openweathermap.org/data/2.5/uvi?appid={appid}&lat={lat}&lon={lon}
 
                 $.ajax({
-                    url: "http://api.openweathermap.org/data/2.5/uvi?appid=" + key + "&lat=" + lat + "&lon=" + lon,
+                    url: "https://api.openweathermap.org/data/2.5/uvi?appid=" + key + "&lat=" + lat + "&lon=" + lon,
                     method: "GET"
 
                 })
