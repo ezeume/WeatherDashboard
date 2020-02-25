@@ -30,12 +30,14 @@ $(document).ready(function () {
     }
     function loadSearchHistory() {
         $("#searchHistory").empty();
+        //create the search btn
 
         for (var i = 0; i < cityHistory.length; i++) {
-            var cityItem = $("<li>");
+            var cityItem = $("<button>");
             console.log(cityItem);
             cityItem.text(cityHistory[i]);
             cityItem.addClass("list-group-item");
+            cityItem.attr("id", "searchbtn");
             $("#searchHistory").prepend(cityItem);
         }
     }
@@ -44,7 +46,9 @@ $(document).ready(function () {
     $("#citySearchButton").on("click", function () {
 
         var city = $("#city").val();
-        cityHistory.includes(city);
+        console.log(city);
+        cityHistory.push(city);
+        console.log(cityHistory);
         loadSearchHistory()
         console.log(cityHistory);
         localStorage.setItem("cityHistory", JSON.stringify(cityHistory));
@@ -53,21 +57,25 @@ $(document).ready(function () {
         ///////////////////
         //api.openweathermap.org/data/2.5/forecast?q={city name}&appid={your api key}
 
-        console.log("api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + key)
+        callapirequest(city);
 
+    })
+
+    function callapirequest(city) {
         $.ajax({
-            url: "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + key,
+            url: "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey,
             method: "GET"
 
         }).then(function (fiveday) {
-            console.log(fiveday);
+            //console.log(fiveday);
+            //console.log(fiveday.list[0].weather[0].icon.png);
             // console.log("this is the five");
 
-            $("#fiveday").empty()
+            $("#fivedaycontainer").empty()
             for (var i = 0; i < fiveday.list.length; i = i + 8) {
-                console.log(fiveday.list[i]);
+                //console.log(fiveday.list[i]);
                 // $("#day"+ (i/8+1))
-                  // var k = response.main.temp;
+                // var k = response.main.temp;
                 // var f = ((k - 273.15) * 9) / 5 + 32;
                 // var currentDay = moment.unix(response.dt).format("MM/DD/YYYY");
                 var newFiveDayDiv = $("<div id='fiveday'>")
@@ -75,7 +83,7 @@ $(document).ready(function () {
                 var fiveDayDivHum = $("<div>").text("Humidity: " + fiveday.list[i].main.humidity);
 
                 newFiveDayDiv.append(fiveDayDivTemp, fiveDayDivHum);
-                $("#fiveday").append(newFiveDayDiv);
+                $("#fivedaycontainer").append(newFiveDayDiv);
             }
 
         })
@@ -86,13 +94,13 @@ $(document).ready(function () {
         $.ajax({
             url: "https://api.openweathermap.org/data/2.5/weather",
             method: "GET",
-            data: { q: city, appid: key, units: "metric" },
+            data: { q: city, appid: APIKey, units: "metric" },
         })
-            .then(function(response) {
+            .then(function (response) {
 
-                console.log(response);
+                //console.log(response);
 
-                var icon = "<img scr='https://openweathermap.org/img/w/" + response.weather[0].icon + ".png' alt=Icon depicting current weather.'>";
+                var icon = "<img src='https://openweathermap.org/img/w/" + response.weather[0].icon + ".png' alt='Icon depicting current weather'>";
 
 
                 $(".city").html("<h3>" + response.name + " " + date + icon + "</h3>");
@@ -104,7 +112,7 @@ $(document).ready(function () {
                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 var lon = response.coord.lon;
                 var lat = response.coord.lat;
-                console.log("https://api.openweathermap.org/data/2.5/uvi?appid=" + key + "&lat=" + lat + "&lon=" + lon)
+                //console.log("https://api.openweathermap.org/data/2.5/uvi?appid=" + key + "&lat=" + lat + "&lon=" + lon)
                 //http://api.openweathermap.org/data/2.5/uvi?appid={appid}&lat={lat}&lon={lon}
 
                 $.ajax({
@@ -114,21 +122,21 @@ $(document).ready(function () {
                 })
                     .then(function (ajaxrequest2) {
                         //uv vis data
-                        console.log(ajaxrequest2.value)
+                        //console.log(ajaxrequest2.value)
                         $(".uv").text("UV Index: " + ajaxrequest2.value);
                     })
                 //console.log("Temperature(F): " + response.main.temp);
 
             })
+    }
 
-    })
+    callapirequest("vegas");
+    $(".list-group-item").click(function () {
+        //alert("The paragraph was clicked.");
+        //this is the value from each btn
+        console.log($(this).text());
+
+        //call ajax request
+        callapirequest($(this).text())
+    });
 })
-
-//dynamically create and append five day forecast 
-
-// var numOfdays = ["day1", "day2", "day3", "day4", "day5"];
-
-// for (var i = 0; i < numOfdays.length; i++) {
-//     var div = $("<div>");
-//     div.attr("class", "col-2");
-// }
